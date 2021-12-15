@@ -21,25 +21,58 @@ const people = [
   'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
 ];
 // Array.prototype.filter()
-    // 1. Filter the list of inventors for those who were born in the 1500's
-
+    // 1. Filter the list of inventors for those who were born in the 1500's 1500 to 1599
+    inventors.filter(function(i){
+      if(i.year >= 1500 && i.year <= 1599){
+        return i.year;
+      }
+    } 
+      );
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    let inventorsName = inventors.map(function(e){
+        return `${e.first} ${e.last}`;
+    })
+    // console.table(inventorsName)
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-
+      //  inventors.sort(function(a,b){
+      //   return a.year - b.year
+      // });
+    // console.table(inventors)
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-
+      let sum = inventors.reduce((accumilator, currentValue) => {
+        return  accumilator + (currentValue.passed - currentValue.year)
+      }, 0);
+      // console.log(sum);
+      // console.log(sum);
     // 5. Sort the inventors by years lived
+     let oldest = inventors.sort(function(a,b){
+        let lastGuy = a.passed - b.year;
+        let nextGuy = b.passed - a.year;
+        return lastGuy > nextGuy ? -1 : 1;
+      });
+    console.table(oldest);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
+      // let boulevards = ['Boulevard des Capucines', 'Boulevard de la Chapelle', 'Boulevard de Clichy', 'Boulevard du Montparnasse'];
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+      let stuff = [ 'jonathan, aldas', 'carlos ortiz'] ;
+      for (let i = 0; i < stuff.length; i++) {
+        // const element = stuff[i];
+        // element.split(',')
+        // console.log(element);
+
+      }
+      stuff.sort((a,b) =>{
+        console.log(b - a);
+      })
+      // console.log(stuff);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
